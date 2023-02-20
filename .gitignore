@@ -1,0 +1,12 @@
+/.git
+/.idea
+/__pycache__
+/logs
+/plugins
+
+config.py
+*.doc
+*.xls
+*.xlsx
+*.bak
+
