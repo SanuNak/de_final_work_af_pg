@@ -12,8 +12,8 @@ from scripts.lentaru_parsing import get_lentaru_news
 from scripts.vedomosty_parsing import get_vedomostyru_news
 
 # Устанавливаем интервал дат для первоначальной загрузки данных за интервал дат.
-data_from = '2023-02-10'
-data_to = '2023-02-17'
+data_from = '2023-02-18'
+data_to = '2023-02-20'
 
 
 # Переопределение функций парсинга новостных сайтов

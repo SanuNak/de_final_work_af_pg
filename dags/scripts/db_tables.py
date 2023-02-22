@@ -56,7 +56,10 @@ def create_tables_into_db():
         CREATE TABLE IF NOT EXISTS source_news
             (
                 source_news_id    INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                source_news_name  TEXT
+                source_news_name  TEXT,
+                row_id INT,
+                CONSTRAINT "FK_row_data"
+                        FOREIGN KEY (row_id) REFERENCES row_data (row_id)                
             );
         """)
 
@@ -67,7 +70,10 @@ def create_tables_into_db():
         CREATE TABLE IF NOT EXISTS category_news
             (
                 category_news_id    INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-                category_news_name  TEXT
+                category_news_name  TEXT,
+                row_id INT,
+                CONSTRAINT "FK_row_data"
+                        FOREIGN KEY (row_id) REFERENCES row_data (row_id)                
             );
         """)
 
@@ -82,10 +88,13 @@ def create_tables_into_db():
                 source_news_id    INT DEFAULT (NULL),
                 category_news_id  INT DEFAULT (NULL),
                 public_date       DATE,
+                row_id            INT,
                 CONSTRAINT "FK_source_news"
                         FOREIGN KEY (source_news_id) REFERENCES source_news (source_news_id), 
                 CONSTRAINT "FK_category_news"
-                        FOREIGN KEY (category_news_id) REFERENCES category_news (category_news_id)
+                        FOREIGN KEY (category_news_id) REFERENCES category_news (category_news_id),
+                CONSTRAINT "FK_row_data"
+                        FOREIGN KEY (row_id) REFERENCES row_data (row_id)
             );
         """)
 
@@ -112,7 +121,9 @@ def create_tables_into_db():
                 "Четверг"  INT DEFAULT (NULL),
                 "Пятница"  INT DEFAULT (NULL),
                 "Суббота"  INT DEFAULT (NULL),
-                "Воскресение"  INT DEFAULT (NULL)
+                "Воскресение"  INT DEFAULT (NULL),
+                CONSTRAINT "FK_category_news"
+                        FOREIGN KEY (category_news_id) REFERENCES category_news (category_news_id)               
             );
         """)
 

@@ -102,7 +102,7 @@ services:
     volumes:
       - postgres-db-volume-two:/var/lib/postgresql-two/data        
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "host.docker.internal:172.17.0.1"
 
   redis:
     image: redis:latest
